@@ -85,7 +85,32 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+  {
+    title: 'How To Not Win in Chess',
+    date: 'Apr 23st, 2016',
+    firstParagraph: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima!
+    Facilis rerum doloremque sunt inventore omnis ipsam enim sed!
+    Numquam repudiandae aspernatur harum at deleniti laboriosam beatae veniam.
+    Adipisci expedita quod ipsa facere quia deserunt? Quasi, quisquam.
+    Eius sequi aperiam necessitatibus odio ut ipsam, consectetur quaerat.
+    Itaque esse quas odit reiciendis qui, deleniti non maxime!
+    Asperiores officia saepe voluptatum ratione delectus a minima optio.
+    Odit veniam obcaecati quam hic facere quisquam ipsa aspernatur?`,
+
+    secondParagraph: `
+    Sunt iste cupiditate eos perspiciatis perferendis nulla, mollitia sequi!
+    Qui numquam, et consectetur corrupti nemo magnam consequuntur libero.
+    Cumque illum odit molestias explicabo repudiandae voluptas sequi vitae.
+    Cupiditate sequi ipsam natus adipisci eius ut expedita necessitatibus.`,
+
+    thirdParagraph: `
+    Laborum, optio iste? Ad tenetur accusantium vero. Quo, quis?
+    Quidem eveniet eligendi nobis ipsa similique nemo corrupti repellendus.
+    Cum velit eius molestiae facere eveniet reprehenderit aspernatur incidunt.
+    Tenetur soluta recusandae repellendus rem maxime possimus, quasi cupiditate?`
   }
+  
 ];
 
 /* Step 1: Create a function that creates a component. You will want your component to look like the template below: 
@@ -112,3 +137,31 @@ const data = [
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
 
 */
+
+function createArticle(info){
+  const article = document.createElement("div");
+  article.classList += "article";
+  const heading = document.createElement("h2");
+  heading.textContent = info.title;
+  article.appendChild(heading);
+  const date = document.createElement("p");
+  date.textContent = info.date;
+  article.appendChild(date);
+  const para1 = document.createElement("p");
+  para1.textContent = info.firstParagraph;
+  article.appendChild(para1);
+  const para2 = document.createElement("p");
+  para2.textContent = info.secondParagraph;
+  article.appendChild(para2);
+  const para3 = document.createElement("p");
+  para3.textContent = info.thirdParagraph;
+  article.appendChild(para3);
+  const span = document.createElement("span");
+  span.classList.add("expandButton");
+  article.appendChild(span);
+  span.addEventListener("click", e =>{article.classList.toggle("article-open");})
+  return article;
+}
+data.forEach(function(article){
+  document.querySelector(".articles").appendChild(createArticle(article));
+});
